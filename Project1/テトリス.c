@@ -1,5 +1,5 @@
 
-//A‚Å¶AD‚Å‰EAS‚Å‰º‚ÉˆÚ“®A‚»‚Ì‘¼‚ÌƒL[‚Å‰ñ“]‚µ‚Ü‚·
+//Aã§å·¦ã€Dã§å³ã€Sã§ä¸‹ã«ç§»å‹•ã€ãã®ä»–ã®ã‚­ãƒ¼ã§å›è»¢ã—ã¾ã™
 
 
 #include <conio.h>
@@ -9,14 +9,14 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define FIELD_WIDTH		(10)
+#define FIELD_WIDTH	(10)
 #define FIELD_HEIGHT	(20)
 
-#define BLOCK_WIDTH		(4)
+#define BLOCK_WIDTH	(4)
 #define BLOCK_HEIGHT	(4)
 
-#define FPS				(1)
-#define INTERVAL		(1000/FPS)
+#define FPS		(1)
+#define INTERVAL	(1000/FPS)
 
 
 typedef struct
@@ -34,7 +34,7 @@ typedef struct
 }MINO;
 
 
-//ƒeƒgƒŠƒ~ƒm‚ÌŒ`ó‚ğ’è‹`
+//ãƒ†ãƒˆãƒªãƒŸãƒã®å½¢çŠ¶ã‚’å®šç¾©
 BLOCK blocks[8] = {
 	//BLOCK_I
 	{
@@ -124,7 +124,7 @@ int screen[FIELD_HEIGHT][FIELD_WIDTH];
 
 MINO mino;
 
-//ƒeƒgƒŠƒ~ƒm‚ÌÕ“Ë”»’è
+//ãƒ†ãƒˆãƒªãƒŸãƒã®è¡çªåˆ¤å®š
 bool Collision() {
 	for (int y = 0; y < mino.block.height; y++)
 	{
@@ -147,7 +147,7 @@ bool Collision() {
 }
 
 
-//ƒQ[ƒ€‰æ–Ê‚Ì•`‰æ
+//ã‚²ãƒ¼ãƒ ç”»é¢ã®æç”»
 void DrawField()
 {
 	memcpy(screen, field, sizeof field);
@@ -172,27 +172,27 @@ void DrawField()
 
 	for (int j = 0; j < FIELD_HEIGHT; j++)
 	{
-		printf(" ");
+		printf("â–¡");
 
 		for (int i = 0; i < FIELD_WIDTH; i++)
 		{
-			printf("%s", screen[j][i] ? "¡" : "  ");//ƒeƒgƒŠƒ~ƒm‚ğ•`‰æ
+			printf("%s", screen[j][i] ? "â– " : "  ");//ãƒ†ãƒˆãƒªãƒŸãƒã‚’æç”»
 		}
-		printf(" ");
+		printf("â–¡");
 		printf("\n");
 	}
 	for (int i = 0; i < FIELD_WIDTH + 2; i++)
 	{
-		printf(" ");
+		printf("â–¡");
 	}
 }
 
-//V‚µ‚¢ƒeƒgƒŠƒ~ƒm‚Ì¶¬
+//æ–°ã—ã„ãƒ†ãƒˆãƒªãƒŸãƒã®ç”Ÿæˆ
 void InitMino()
 {
-	mino.block = blocks[rand() % 7]; //ƒeƒgƒŠƒ~ƒm‚ÌŒ`óŒˆ’è
+	mino.block = blocks[rand() % 7]; //ãƒ†ãƒˆãƒªãƒŸãƒã®å½¢çŠ¶æ±ºå®š
 
-	//ƒeƒgƒŠƒ~ƒm‚Ì‰ŠúˆÊ’u
+	//ãƒ†ãƒˆãƒªãƒŸãƒã®åˆæœŸä½ç½®
 	mino.x = (FIELD_WIDTH - mino.block.width) / 2;
 	mino.y = 0;
 }
@@ -208,14 +208,14 @@ void Init() {
 
 int main()
 {
-	srand((unsigned int)time(NULL));//—”¶¬
+	srand((unsigned int)time(NULL));//ä¹±æ•°ç”Ÿæˆ
 
 	Init();
 	clock_t lastClock = clock();
 
 	while (1)
 	{
-		//ŠÔŒo‰ß‚É‚æ‚è—‰º‚³‚¹‚é
+		//æ™‚é–“çµŒéã«ã‚ˆã‚Šè½ä¸‹ã•ã›ã‚‹
 		clock_t nowClock = clock();
 		if (nowClock >= lastClock + INTERVAL)
 		{
@@ -277,13 +277,13 @@ int main()
 					system("cls");
 					printf("GAME OVER");
 					_getch();
-					Init();// ƒQ[ƒ€‚ğƒŠƒZƒbƒg‚·‚é
+					Init();// ã‚²ãƒ¼ãƒ ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
 				}
 			}
 			DrawField();
 		}
 
-		//ƒL[ƒ{[ƒh‚Å‘€ìo—ˆ‚é‚æ‚¤‚É‚·‚é
+		//ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã§æ“ä½œå‡ºæ¥ã‚‹ã‚ˆã†ã«ã™ã‚‹
 		if (_kbhit())
 		{
 			MINO lastMino = mino;
@@ -301,7 +301,7 @@ int main()
 				mino.x++;
 				break;
 
-				//ƒeƒgƒŠƒ~ƒm‚Ì‰ñ“]
+				//ãƒ†ãƒˆãƒªãƒŸãƒã®å›è»¢
 			default:
 			{
 				MINO newMino = mino;
@@ -319,7 +319,7 @@ int main()
 
 			}
 
-			//ƒ~ƒm‚ª•Ç‚ÆÚG‚µ‚½‚ç‘O‚Ìó‘Ô‚ğ•Û
+			//ãƒŸãƒãŒå£ã¨æ¥è§¦ã—ãŸã‚‰å‰ã®çŠ¶æ…‹ã‚’ä¿æŒ
 			if (Collision())
 			{
 				mino = lastMino;
